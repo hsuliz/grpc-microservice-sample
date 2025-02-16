@@ -1,4 +1,4 @@
-package hsuliz.grpc_microservice_sample.decoder_service
+package hsuliz.grpc_microservice_sample.order_service
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class DecoderServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<DecoderServiceApplication>(*args)
+    runApplication<DecoderServiceApplication>(*args)
 }

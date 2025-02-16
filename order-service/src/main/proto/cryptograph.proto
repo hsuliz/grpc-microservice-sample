@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "hsuliz.grpc_microservice_sample.order_service.proto";
+option java_outer_classname = "CryptographProto";
+
+message TextToEncode {
+  string text = 1;
+}
+
+message EncodedText {
+  string text = 1;
+}
+
+service CryptographService {
+  rpc EncodeText(TextToEncode) returns (EncodedText);
+}
