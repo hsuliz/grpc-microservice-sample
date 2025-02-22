@@ -14,10 +14,10 @@ type server struct {
 }
 
 func (s *server) DecodeText(_ context.Context, req *pb.DecodeTextRequest) (*pb.DecodeTextResponse, error) {
-	log.Println("got rquest:", req)
+	log.Println("got request:", req)
 	text, err := cracker.CrackHash(req.Text, req.Runes)
 	if err != nil {
-		log.Println("error cracking hash:", err) // Log the error for debugging
+		log.Println("error cracking hash:", err)
 		return nil, status.Errorf(codes.NotFound, "failed to decode hash: %v", err)
 	}
 	return &pb.DecodeTextResponse{Text: text}, nil

@@ -13,18 +13,28 @@ func CrackHash(hashedText string, numOfRunes uint32) (string, error) {
 		log.Fatal(err)
 	}
 
-	totalWords := 0
+	subsets := generateSubsets(generatedRunes)
 
-	for _, subset := range generateSubsets(generatedRunes) {
+	totalWords := 0
+	for _, subset := range subsets {
+		totalWords += len(permutate(subset))
+	}
+
+	log.Println("total words generated:", totalWords)
+	wordCount := 0
+	for _, subset := range subsets {
 		for _, word := range permutate(subset) {
-			totalWords++
-			log.Println(string(word))
+			count++
+			if count % 10000 == 0 {
+				log.Println("currently at word:", wordCount)
+			}
 			if hashText(string(word)) == hashedText {
-				log.Println("got world:", string(word))
+				log.Println("found match:", string(word))
 				return string(word), nil
 			}
 		}
 	}
+
 	return "", errors.New("no match found")
 }
 
@@ -47,7 +57,7 @@ func generateSubsets(runes []rune) [][]rune {
 
 func permutate(runes []rune) [][]rune {
 	var helper func([]rune, int)
-	res := [][]rune{}
+	var res [][]rune
 
 	helper = func(arr []rune, n int) {
 		if n == 1 {
