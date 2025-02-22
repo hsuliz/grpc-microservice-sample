@@ -5,13 +5,14 @@ option java_package = "hsuliz.grpc_microservice_sample.order_service.proto";
 option java_outer_classname = "CryptographProto";
 
 service CryptographService {
-  rpc EncodeText(EncodeTextRequest) returns (EncodeTextResponse);
+  rpc DecodeText(DecodeTextRequest) returns (DecodeTextResponse);
 }
 
-message EncodeTextRequest {
+message DecodeTextRequest {
   string text = 1;
+  uint32 runes = 2;
 }
 
-message EncodeTextResponse {
+message DecodeTextResponse {
   string text = 1;
 }

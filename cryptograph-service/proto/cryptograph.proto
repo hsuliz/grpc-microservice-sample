@@ -3,13 +3,14 @@ syntax = "proto3";
 option go_package = "hsuliz/grpc_microservice_sample/cryptograph";
 
 service CryptographService {
-  rpc EncodeText(EncodeTextRequest) returns (EncodeTextResponse);
+  rpc DecodeText(DecodeTextRequest) returns (DecodeTextResponse);
 }
 
-message EncodeTextRequest {
+message DecodeTextRequest {
   string text = 1;
+  uint32 runes = 2;
 }
 
-message EncodeTextResponse {
+message DecodeTextResponse {
   string text = 1;
 }

@@ -1,6 +1,6 @@
 spring.application.name: order-service
+server.port: 8080
+
 grpc:
-  client:
-    grpc-post-client:
-      address: static://localhost:8090
-      negotiation-type: plaintext
+  address: localhost
+  port: 8090

@@ -6,5 +6,5 @@ import org.springframework.web.reactive.function.server.router
 
 @Configuration
 class RouteConfig() {
-  @Bean fun helloWorldRouter(handler: Handler) = router { POST("/encode", handler::encodeMessage) }
+  @Bean fun helloWorldRouter(handler: Handler) = router { POST("/decode", handler::decodeMessage) }
 }
