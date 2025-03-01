@@ -1,19 +1,19 @@
-package main
+package server
 
 import (
 	"context"
-	"cryptograph-service/cracker"
-	pb "cryptograph-service/proto"
+	"cryptograph-service/internal/cracker"
+	"cryptograph-service/internal/pb"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"log"
 )
 
-type server struct {
+type Server struct {
 	pb.CryptographServiceServer
 }
 
-func (s *server) DecodeText(_ context.Context, req *pb.DecodeTextRequest) (*pb.DecodeTextResponse, error) {
+func (s *Server) DecodeText(_ context.Context, req *pb.DecodeTextRequest) (*pb.DecodeTextResponse, error) {
 	log.Println("got request:", req)
 	text, err := cracker.CrackHash(req.Text, req.Runes)
 	if err != nil {

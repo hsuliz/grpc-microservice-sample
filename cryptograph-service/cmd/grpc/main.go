@@ -1,7 +1,8 @@
 package main
 
 import (
-	pb "cryptograph-service/proto"
+	"cryptograph-service/cmd/grpc/server"
+	"cryptograph-service/internal/pb"
 	"flag"
 	"fmt"
 	"google.golang.org/grpc"
@@ -23,7 +24,7 @@ func main() {
 	log.Printf("server listening at %v", lis.Addr())
 
 	grpcServer := grpc.NewServer()
-	pb.RegisterCryptographServiceServer(grpcServer, &server{})
+	pb.RegisterCryptographServiceServer(grpcServer, &server.Server{})
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
