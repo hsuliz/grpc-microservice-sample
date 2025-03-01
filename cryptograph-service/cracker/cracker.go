@@ -25,7 +25,7 @@ func CrackHash(hashedText string, numOfRunes uint32) (string, error) {
 	for _, subset := range subsets {
 		for _, word := range permutate(subset) {
 			wordCount++
-			if wordCount % 10000 == 0 {
+			if wordCount%10000 == 0 {
 				log.Println("currently at word:", wordCount)
 			}
 			if hashText(string(word)) == hashedText {
