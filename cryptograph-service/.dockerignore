@@ -1,0 +1,9 @@
+proto/
+makefile
+
+# Docker
+Dockerfile
+
+# Git
+.git
+.gitignore
