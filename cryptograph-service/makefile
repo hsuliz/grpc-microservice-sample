@@ -14,6 +14,4 @@ run:
 
 # Docker
 build-image:
-	docker build --platform linux/amd64 .
-
-run-image:
+	docker build --platform linux/amd64 -t hsuliz/gms-cryptograph-service .

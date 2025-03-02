@@ -9,7 +9,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o cryptograph-service ./cmd/grpc/main.go
 
-FROM golang:1.23-alpine
+FROM debian:11-slim
 WORKDIR /app
 
 COPY --from=builder /build/cryptograph-service ./
