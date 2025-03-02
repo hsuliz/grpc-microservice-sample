@@ -7,13 +7,13 @@ RUN go mod download
 
 # Build app
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o cryptograph-service ./cmd/grpc/main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /cryptograph-service ./cmd/grpc/main.go
 
 FROM debian:11-slim
 WORKDIR /app
 
-COPY --from=builder /build/cryptograph-service ./
+COPY --from=builder /cryptograph-service /cryptograph-service
 
 EXPOSE 8080
 
-CMD ["/app/cryptograph-service"]
+CMD ["/cryptograph-service"]
