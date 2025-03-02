@@ -10,7 +10,7 @@ COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o /cryptograph-service ./cmd/grpc/main.go
 
 FROM debian:11-slim
-WORKDIR /app
+WORKDIR /
 
 COPY --from=builder /cryptograph-service /cryptograph-service
 
