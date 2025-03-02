@@ -2,5 +2,5 @@ spring.application.name: order-service
 server.port: 8080
 
 grpc:
-  address: localhost
-  port: 8090
+  address: ${GRPC_ADDRESS}
+  port: ${GRPC_PORT}

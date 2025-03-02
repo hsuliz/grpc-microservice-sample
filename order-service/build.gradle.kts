@@ -1,4 +1,5 @@
 import com.google.protobuf.gradle.id
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
   kotlin("jvm") version "1.9.25"
@@ -11,7 +12,11 @@ plugins {
 
 group = "hsuliz.grpc-microservice-sample"
 
-version = "0.0.1-SNAPSHOT"
+version = "latest"
+
+tasks.named<BootBuildImage>("bootBuildImage") {
+  imageName.set("hsuliz/gms-order-service")
+}
 
 java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
 
